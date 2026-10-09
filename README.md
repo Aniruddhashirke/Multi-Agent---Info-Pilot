@@ -34,21 +34,30 @@ The project integrates weather updates, general web search, and financial news r
 
 ## 🏗️ System Architecture
 
-```mermaid
-flowchart TD
-    A[User Query] --> B[Gradio Chat Interface]
-    B --> C[LangChain AI Agent]
-    C --> D[Groq LLM]
-    D --> E{Select Tool}
-    E --> F[WeatherAPI]
-    E --> G[SerpAPI Web Search]
-    E --> H[Marketaux Financial News]
-    F --> I[Tool Results]
-    G --> I
-    H --> I
-    I --> J[LLM Response Generation]
-    J --> K[Answer in Chat Interface]
-```
+User
+  ↓
+Gradio Chat Interface
+  ↓
+LangChain AI Agent
+  ↓
+Groq LLM (GPT-OSS 20B)
+  ↓
+Tool Selection & Routing
+  ↓
+  ├──→ Weather Tool → WeatherAPI
+  │
+  ├──→ Web Search Tool → SerpAPI
+  │
+  └──→ Financial News Tool → Marketaux API
+  ↓
+External API Responses
+  ↓
+LLM Response Processing
+  ↓
+Final Answer Generation
+  ↓
+Display Response on Gradio Interface
+
 
 ### How It Works
 
