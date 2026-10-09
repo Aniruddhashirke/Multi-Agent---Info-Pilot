@@ -34,29 +34,49 @@ The project integrates weather updates, general web search, and financial news r
 
 ## 🏗️ System Architecture
 
+## 🏗️ System Architecture
+
+```text
 User
-  ↓
+ |
+ v
 Gradio Chat Interface
-  ↓
+ |
+ v
 LangChain AI Agent
-  ↓
+ |
+ v
 Groq LLM (GPT-OSS 20B)
-  ↓
+ |
+ v
 Tool Selection & Routing
-  ↓
-  ├──→ Weather Tool → WeatherAPI
-  │
-  ├──→ Web Search Tool → SerpAPI
-  │
-  └──→ Financial News Tool → Marketaux API
-  ↓
-External API Responses
-  ↓
-LLM Response Processing
-  ↓
-Final Answer Generation
-  ↓
-Display Response on Gradio Interface
+ |
+ +----------------------+----------------------+
+ |                      |                      |
+ v                      v                      v
+Weather Tool       Web Search Tool      Financial News Tool
+ |                      |                      |
+ v                      v                      v
+WeatherAPI             SerpAPI              Marketaux API
+ |                      |                      |
+ +----------------------+----------------------+
+                        |
+                        v
+              External API Responses
+                        |
+                        v
+              LLM Response Processing
+                        |
+                        v
+               Final Answer Generation
+                        |
+                        v
+           Display Response on Gradio UI
+                        |
+                        v
+                       User
+```
+
 
 
 ### How It Works
