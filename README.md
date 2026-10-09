@@ -34,7 +34,6 @@ The project integrates weather updates, general web search, and financial news r
 
 ## 🏗️ System Architecture
 
-## 🏗️ System Architecture
 
 ```text
 User
